@@ -2763,7 +2763,7 @@ holdReady:function(a){a?r.readyWait++:r.ready(!0)},ready:function(a){(a===!0?--r
 		
 		l = elem.href.substring(20);
 		if (l.startsWith("@")) {
-			l = substring(1);
+			l = l.substring(1);
 		}
 		l=escape("@"+l+" "+$("#texto").val()+" #LeyDeHumedales");
 		pa=$(elem).parent().parent().parent().parent().children();
