@@ -1,11 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <title>Senadores en contra de los humedales</title>
 
+<script src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
 <style>
+.boton {
+	background-color: #ff0;
+	display: inline-block;
+	padding: 1em;
+	margin:0.5em;
+}
 body {
 	font-family: Verdana;
 }
@@ -22,7 +30,10 @@ td li {
 </head>
 <body>
 	
-<h1>Senadores en contra de los humedales</h1>
+<h1>Senadores contra los humedales</h1>
+<div>
+Texto para twittear <input type=text id=texto size=50 name=texto value='No le interesa las inundaciones y la pureza del agua?'>
+</div>
  <table class="table table-bordered" summary="Listado de Senadores Nacionales Ordenados Alfabéticamente" style="font-size: 1.05em;">
     <thead>
       <tr class='si'>
@@ -2722,5 +2733,19 @@ td li {
 	      </tr>
     </tbody>
   </table>
+ <script>
+$(document).ready(function(){
+	twttr.widgets.load();
+	$("li a[href*='twitter']").each(function(index,elem){
+		
+		l = elem.href.substring(20);
+		console.log("l:"+l);
+		l=escape("@"+l+" "+$("#texto").val()+" #LeyDeHumedales");
+		pa=$(elem).parent().parent().parent().parent().children();
+		td=pa[1];
+		$(td).append("<br><a href='https://twitter.com/intent/tweet?text="+l+"' class='twitter-mention-button boton' data-show-count=false data-size=large>PREGUNTALE!</a>");
+	});
+});
+</script>
 </body>
 </html>
